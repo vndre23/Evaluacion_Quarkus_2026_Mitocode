@@ -22,6 +22,8 @@ import static org.hamcrest.Matchers.equalTo;
 @TestHTTPEndpoint(ReservaResource.class)
 class ReservaResourceTest {
 
+    private static final String TRACEPARENT = "00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01";
+
     @InjectMock
     private ReservaService reservaService;
 
@@ -48,6 +50,7 @@ class ReservaResourceTest {
         )).thenReturn(Uni.createFrom().item(apiResponse));
 
         given()
+                .header("traceparent", TRACEPARENT)
                 .contentType("application/json")
                 .body("""
                         {
@@ -83,6 +86,7 @@ class ReservaResourceTest {
         when(reservaService.cancelar(reservaId)).thenReturn(Uni.createFrom().item(apiResponse));
 
         given()
+                .header("traceparent", TRACEPARENT)
                 .pathParam("id", reservaId)
                 .when()
                 .patch("/cancelar/{id}")

@@ -8,10 +8,10 @@ quarkus:
     password: mitocode
 
     reactive:
-      url: postgresql://postgres-mitocode-evaluacion-26-4:5432/evaluaciondb2026_quarkus?sslmode=disable
+      url: postgresql://localhost:5432/evaluaciondb2026_quarkus?sslmode=disable
 
     jdbc:
-      url: jdbc:postgresql://postgres-mitocode-evaluacion-26-4:5432/evaluaciondb2026_quarkus?sslmode=disable
+      url: jdbc:postgresql://localhost:5432/evaluaciondb2026_quarkus?sslmode=disable
       max-size: 20
 
   hibernate-orm:

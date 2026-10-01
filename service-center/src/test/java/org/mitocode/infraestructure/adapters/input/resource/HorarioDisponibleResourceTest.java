@@ -28,6 +28,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestHTTPEndpoint(HorarioDisponibleResource.class)
 class HorarioDisponibleResourceTest {
 
+    private static final String TRACEPARENT = "00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01";
+
     @InjectMock
     private AsignarHorarioProfesionalUseCase asignarHorarioProfesionalUseCase;
 
@@ -51,6 +53,7 @@ class HorarioDisponibleResourceTest {
                 .thenReturn(Uni.createFrom().item(apiResponse));
 
         given()
+                .header("traceparent", TRACEPARENT)
                 .contentType("application/json")
                 .body(requestDto)
                 .when()
@@ -89,6 +92,7 @@ class HorarioDisponibleResourceTest {
                 );
 
         given()
+                .header("traceparent", TRACEPARENT)
                 .contentType(ContentType.JSON)
                 .body(requestDto)
                 .when()
