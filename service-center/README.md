@@ -367,13 +367,42 @@ Los errores son tratados de manera centralizada para proporcionar respuestas con
 
 ---
 
-# Resiliencia
+# # Resiliencia
 
 La aplicación utiliza **SmallRye Fault Tolerance** para implementar mecanismos de resiliencia.
 
-Al menos uno de los servicios se encuentra protegido utilizando las capacidades proporcionadas por esta extensión.
+Como parte de los requerimientos de la evaluación, se aplicaron las siguientes estrategias sobre el método `findById`:
 
-El objetivo es controlar posibles errores temporales y mejorar la tolerancia a fallos de la aplicación.
+```java
+@Fallback(fallbackMethod = "recoverFindById")
+@CircuitBreaker(
+        requestVolumeThreshold = 4,
+        failureRatio = 0.5,
+        delay = 10000
+)
+@Retry(
+        maxRetries = 2,
+        delay = 500
+)
+@Timeout(2000)
+```
+
+Estas anotaciones permiten demostrar el uso de los mecanismos de tolerancia a fallos proporcionados por SmallRye Fault Tolerance:
+
+* `@Fallback`: permite definir un método alternativo cuando la operación no puede completarse correctamente.
+* `@CircuitBreaker`: controla la cantidad de fallos antes de abrir el circuito.
+* `@Retry`: permite reintentar la operación cuando se presenta un fallo.
+* `@Timeout`: establece un tiempo máximo de espera para la ejecución.
+
+> **Nota:** 
+> Esta implementación se realizó específicamente como parte de los requisitos de la evaluación final. 
+> Actualmente el proyecto no consume ningún microservicio externo ni presenta una comunicación entre microservicios 
+> que requiera mecanismos de resiliencia. 
+> Por este motivo, las estrategias de `Fallback`, `CircuitBreaker`, `Retry` y `Timeout` 
+> fueron incorporadas sobre `findById` con fines demostrativos y para cumplir con el requisito 
+> de la evaluación relacionado, es por ello que al momento de realizar la consulta por id, devuelve el fallback 
+> del `CircuitBreaker` no es por una falla del endpoint solo por fines del examén.
+> con **SmallRye Fault Tolerance**.
 
 ---
 

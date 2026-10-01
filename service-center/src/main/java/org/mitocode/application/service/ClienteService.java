@@ -2,6 +2,10 @@ package org.mitocode.application.service;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
+import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Retry;
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.hibernate.exception.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.mitocode.application.command.CreateUpdateClientCommand;
@@ -11,7 +15,10 @@ import org.mitocode.application.port.out.cliente.*;
 import org.mitocode.application.response.ApiResponse;
 import org.mitocode.application.response.PageResponseDto;
 import org.mitocode.domain.enums.ErrorType;
+import org.mitocode.domain.enums.ReservaEstado;
 import org.mitocode.domain.model.Cliente;
+
+import java.util.UUID;
 
 @ApplicationScoped
 @Slf4j
@@ -76,6 +83,17 @@ public class ClienteService implements CrudClienteUseCase {
     }
 
     @Override
+    @Fallback(fallbackMethod = "recoverFindById")
+    @CircuitBreaker(
+            requestVolumeThreshold = 4,
+            failureRatio = 0.5,
+            delay = 10000
+    )
+    @Retry(
+            maxRetries = 2,
+            delay = 500
+    )
+    @Timeout(2000)
     public Uni<ApiResponse<Cliente>> findById(String id) {
         return this.findByIdClientePort.findById(id)
                 .onItem().ifNull().failWith(() ->
@@ -88,6 +106,19 @@ public class ClienteService implements CrudClienteUseCase {
                     return response;
                 });
 
+    }
+
+    private Uni<ApiResponse<Cliente>> recoverFindById(String id) {
+        ApiResponse<Cliente> response = new ApiResponse<>();
+        response.setData(Cliente.builder()
+                        .id(UUID.randomUUID())
+                        .nombres("Cliente Fallback")
+                        .apellidos("Cliente Fallback")
+                        .email("email@fallback.com")
+                        .estadoActivo(false)
+                .build());
+
+        return Uni.createFrom().item(response);
     }
 
     @Override
