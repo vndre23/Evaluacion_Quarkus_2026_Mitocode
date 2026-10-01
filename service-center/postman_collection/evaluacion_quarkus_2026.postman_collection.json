@@ -1,0 +1,491 @@
+{
+  "info": {
+    "_postman_id": "0e07da3e-0219-4ff7-9f8e-7a5da5bb7c1e",
+    "name": "evaluacion_quarkus_2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "13001476"
+  },
+  "item": [
+    {
+      "name": "CrudCliente",
+      "item": [
+        {
+          "name": "createCliente",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombres\": \"Jorge Alonso\",\r\n    \"apellidos\": \"Nieto Tito\",\r\n    \"email\": \"jorgetito@gmail.com\",\r\n    \"telefono\": \"+51983567897\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "client"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllClient",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client?page=1&limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "client"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getById",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/978badc3-d10e-41de-b40d-38f6145aa528",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "client",
+                "978badc3-d10e-41de-b40d-38f6145aa528"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateById",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales111\",\r\n    \"email\": \"ajcruz@gmail.com\",\r\n    \"telefono\": \"123456789\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/978badc3-d10e-41de-b40d-38f6145aa528",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "client",
+                "978badc3-d10e-41de-b40d-38f6145aa528"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CrudProfesional",
+      "item": [
+        {
+          "name": "createProfesional",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\",\r\n    \"especialidad\": \"Psicología\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "profesional"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllProfesional",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional?page=1&limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "profesional"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getByIdProfesional",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/79965c97-d74a-44e1-83e8-076ba781ccdf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "profesional",
+                "79965c97-d74a-44e1-83e8-076ba781ccdf"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateByIdProfesional",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\",\r\n    \"especialidad\": \"Asesoria\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/79965c97-d74a-44e1-83e8-076ba781ccdf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "profesional",
+                "79965c97-d74a-44e1-83e8-076ba781ccdf"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "crearHorarioDisponible",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"profesional\": \"79965c97-d74a-44e1-83e8-076ba781ccdf\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"14:00:00\",\r\n  \"horaFin\": \"15:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/mitocode/api/v1/service-center/horario-disponible",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "mitocode",
+            "api",
+            "v1",
+            "service-center",
+            "horario-disponible"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "reservar",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"cliente\": \"978badc3-d10e-41de-b40d-38f6145aa528\",\r\n  \"profesional\": \"79965c97-d74a-44e1-83e8-076ba781ccdf\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"09:00:00\",\r\n  \"horaFin\": \"10:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/mitocode/api/v1/service-center/reserva",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "mitocode",
+            "api",
+            "v1",
+            "service-center",
+            "reserva"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CancelarReserva",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/mitocode/api/v1/service-center/reserva/cancelar/c582ff62-7aa7-4f46-a1a3-14eb2c9a49e6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "mitocode",
+            "api",
+            "v1",
+            "service-center",
+            "reserva",
+            "cancelar",
+            "c582ff62-7aa7-4f46-a1a3-14eb2c9a49e6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getAllProfesionalReservas",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "traceparent",
+            "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/reservas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "mitocode",
+            "api",
+            "v1",
+            "service-center",
+            "profesional",
+            "reservas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getAllProfesionalReservasByFecha",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "traceparent",
+            "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/reservas-by-fecha",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "mitocode",
+            "api",
+            "v1",
+            "service-center",
+            "profesional",
+            "reservas-by-fecha"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

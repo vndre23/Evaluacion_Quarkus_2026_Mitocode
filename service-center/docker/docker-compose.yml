@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-mitocode-evaluacion-26-4
+
+    environment:
+      POSTGRES_DB: evaluaciondb2026_quarkus
+      POSTGRES_USER: mitocode
+      POSTGRES_PASSWORD: mitocode
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data_evaluacion:/var/lib/postgresql/data
+
+    restart: always
+
+    networks:
+      - mi-red-quarkus
+
+
+volumes:
+  postgres_data_evaluacion:
+
+networks:
+  mi-red-quarkus:
+    name: mi-red-quarkus
+    driver: bridge

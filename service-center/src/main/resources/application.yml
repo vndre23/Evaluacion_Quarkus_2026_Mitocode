@@ -1,0 +1,28 @@
+quarkus:
+  http:
+    port: 8080
+
+  datasource:
+    db-kind: postgresql
+    username: mitocode
+    password: mitocode
+
+    reactive:
+      url: postgresql://localhost:5432/evaluaciondb2026_quarkus?sslmode=disable
+
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/evaluaciondb2026_quarkus?sslmode=disable
+      max-size: 20
+
+  hibernate-orm:
+    database:
+      generation: none
+      default-schema: "center"
+
+  flyway:
+    migrate-at-start: true
+    schemas: center
+    create-schemas: true
+
+  jackson:
+    accept-case-insensitive-enums: true
