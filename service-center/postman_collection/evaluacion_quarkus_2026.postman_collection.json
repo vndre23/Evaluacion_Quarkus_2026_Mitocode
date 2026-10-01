@@ -20,7 +20,8 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "body": {
@@ -61,7 +62,8 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "url": {
@@ -103,11 +105,12 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/978badc3-d10e-41de-b40d-38f6145aa528",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/178badc3-d10e-41de-b40d-38f6145aa528",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -119,7 +122,7 @@
                 "v1",
                 "service-center",
                 "client",
-                "978badc3-d10e-41de-b40d-38f6145aa528"
+                "178badc3-d10e-41de-b40d-38f6145aa528"
               ]
             }
           },
@@ -136,7 +139,8 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "body": {
@@ -149,7 +153,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/978badc3-d10e-41de-b40d-38f6145aa528",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/178badc3-d10e-41de-b40d-38f6145aa528",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -161,7 +165,41 @@
                 "v1",
                 "service-center",
                 "client",
-                "978badc3-d10e-41de-b40d-38f6145aa528"
+                "178badc3-d10e-41de-b40d-38f6145aa528"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteById",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/d7106dcb-5bda-45a9-93c0-15281dc3ad06",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "client",
+                "d7106dcb-5bda-45a9-93c0-15281dc3ad06"
               ]
             }
           },
@@ -183,12 +221,13 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\",\r\n    \"especialidad\": \"Psicología\"\r\n}",
+              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\"\r\n    //\"especialidad\": \"Psicología\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -224,7 +263,8 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "url": {
@@ -266,11 +306,12 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/79965c97-d74a-44e1-83e8-076ba781ccdf",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/19965c97-d74a-44e1-83e8-076ba781ccdf",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -282,7 +323,7 @@
                 "v1",
                 "service-center",
                 "profesional",
-                "79965c97-d74a-44e1-83e8-076ba781ccdf"
+                "19965c97-d74a-44e1-83e8-076ba781ccdf"
               ]
             }
           },
@@ -299,7 +340,8 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text"
+                "type": "text",
+                "disabled": true
               }
             ],
             "body": {
@@ -311,6 +353,40 @@
                 }
               }
             },
+            "url": {
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/19965c97-d74a-44e1-83e8-076ba781ccdf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "mitocode",
+                "api",
+                "v1",
+                "service-center",
+                "profesional",
+                "19965c97-d74a-44e1-83e8-076ba781ccdf"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteById",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "traceparent",
+                "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+                "type": "text",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/79965c97-d74a-44e1-83e8-076ba781ccdf",
               "protocol": "http",
@@ -336,10 +412,17 @@
       "name": "crearHorarioDisponible",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "traceparent",
+            "value": "f4462048-0536-4fca-92ad-8e11a156f2f2",
+            "type": "text",
+            "disabled": true
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"profesional\": \"79965c97-d74a-44e1-83e8-076ba781ccdf\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"14:00:00\",\r\n  \"horaFin\": \"15:00:00\"\r\n}",
+          "raw": "{\r\n  \"profesional\": \"79965c97-d74a-44e1-83e8-076ba781ccdf\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"15:00:00\",\r\n  \"horaFin\": \"16:00:00\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -400,7 +483,14 @@
       "name": "CancelarReserva",
       "request": {
         "method": "PATCH",
-        "header": [],
+        "header": [
+          {
+            "key": "traceparent",
+            "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+            "type": "text",
+            "disabled": true
+          }
+        ],
         "url": {
           "raw": "http://localhost:8080/mitocode/api/v1/service-center/reserva/cancelar/c582ff62-7aa7-4f46-a1a3-14eb2c9a49e6",
           "protocol": "http",
@@ -432,7 +522,8 @@
           {
             "key": "traceparent",
             "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-            "type": "text"
+            "type": "text",
+            "disabled": true
           }
         ],
         "url": {

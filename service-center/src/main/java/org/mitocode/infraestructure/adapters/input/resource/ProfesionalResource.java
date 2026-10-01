@@ -70,6 +70,14 @@ public class ProfesionalResource {
                 .map(response -> Response.ok(response).build());
     }
 
+    @Operation( summary = "Elimina profesional", description = "Cambia de estado a un profesional (false)." )
+    @DELETE
+    @Path("/{id}")
+    public Uni<Response> deleteById(@PathParam("id") String id) {
+        return this.crudProfesionalUseCase.deleteById(id)
+                .replaceWith(Response.noContent().build());
+    }
+
     @Operation( summary = "Listar profesionales con reservas", description = "Obtiene una lista paginada de profesionales asociados a reservas." )
     @GET
     @Path("/reservas")

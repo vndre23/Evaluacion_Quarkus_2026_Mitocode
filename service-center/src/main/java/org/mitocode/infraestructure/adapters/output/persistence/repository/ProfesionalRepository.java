@@ -24,7 +24,7 @@ import java.util.UUID;
 @ApplicationScoped
 public class ProfesionalRepository implements PanacheRepositoryBase<ProfesionalEntity, UUID>,
         SaveProfesionalPort, ListAllProfesionalPort, FindByIdProfesionalPort, UpdateProfesionalByIdPort,
-        ListAllProfesionalByFechaPort {
+        ListAllProfesionalByFechaPort, DeleteByIdProfesionalPort {
 
     @Override
     @WithTransaction
@@ -99,5 +99,14 @@ public class ProfesionalRepository implements PanacheRepositoryBase<ProfesionalE
         return entities.stream()
                 .map(this::toDomain)
                 .toList();
+    }
+
+    @Override
+    @WithTransaction
+    public Uni<Void> deleteById(String id) {
+        return this.update(
+                "estadoActivo = false where id = ?1",
+                UUID.fromString(id)
+        ).replaceWithVoid();
     }
 }

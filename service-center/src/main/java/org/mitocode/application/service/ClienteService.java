@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mitocode.application.command.CreateUpdateClientCommand;
 import org.mitocode.application.exceptions.BusinessException;
 import org.mitocode.application.port.in.CrudClienteUseCase;
-import org.mitocode.application.port.out.cliente.FindByIdClientePort;
-import org.mitocode.application.port.out.cliente.ListAllClientePort;
-import org.mitocode.application.port.out.cliente.SaveClientePort;
-import org.mitocode.application.port.out.cliente.UpdateClienteByIdPort;
+import org.mitocode.application.port.out.cliente.*;
 import org.mitocode.application.response.ApiResponse;
 import org.mitocode.application.response.PageResponseDto;
 import org.mitocode.domain.enums.ErrorType;
@@ -28,11 +25,14 @@ public class ClienteService implements CrudClienteUseCase {
 
     private final UpdateClienteByIdPort updateClienteByIdPort;
 
-    public ClienteService(SaveClientePort saveClientePort, ListAllClientePort listAllClientePort, FindByIdClientePort findByIdClientePort, UpdateClienteByIdPort updateClienteByIdPort) {
+    private final DeleteByIdClientePort deleteByIdClientePort;
+
+    public ClienteService(SaveClientePort saveClientePort, ListAllClientePort listAllClientePort, FindByIdClientePort findByIdClientePort, UpdateClienteByIdPort updateClienteByIdPort, DeleteByIdClientePort deleteByIdClientePort) {
         this.saveClientePort = saveClientePort;
         this.listAllClientePort = listAllClientePort;
         this.findByIdClientePort = findByIdClientePort;
         this.updateClienteByIdPort = updateClienteByIdPort;
+        this.deleteByIdClientePort = deleteByIdClientePort;
     }
 
     @Override
@@ -92,7 +92,13 @@ public class ClienteService implements CrudClienteUseCase {
 
     @Override
     public Uni<Void> deleteById(String id) {
-        return null;
+        return this.findByIdClientePort.findById(id)
+                .onItem().ifNull().failWith(() ->
+                        new BusinessException(
+                                ErrorType.BUSINESS_NOT_FOUND_ERROR,
+                                ErrorType.BUSINESS_NOT_FOUND_ERROR.getDescription()))
+                .flatMap(cliente -> deleteByIdClientePort.deleteById(cliente.getId().toString()));
+
     }
 
     private Cliente toDomain(CreateUpdateClientCommand command) {

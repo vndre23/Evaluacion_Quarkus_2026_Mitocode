@@ -192,6 +192,24 @@ public class ClienteResource {
                 );
     }
 
+    @DELETE
+    @Path("/{id}")
+    @Operation(
+            summary = "Eliminar cliente",
+            description = "Cambia el estado del cliente a false."
+    )
+    public Uni<Response> deleteById(
+            @Parameter(
+                    description = "Identificador único del cliente",
+                    required = true,
+                    example = "11111111-1111-1111-1111-111111111111"
+            )
+            @PathParam("id") String id) {
+
+        return crudClienteUseCase.deleteById(id)
+                .replaceWith(Response.noContent().build());
+    }
+
     private CreateUpdateClientCommand toDomain(
             ClienteRequestDto requestDto) {
 

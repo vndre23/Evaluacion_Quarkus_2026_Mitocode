@@ -7,10 +7,7 @@ import io.quarkus.panache.common.Page;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.mitocode.application.port.out.cliente.FindByIdClientePort;
-import org.mitocode.application.port.out.cliente.ListAllClientePort;
-import org.mitocode.application.port.out.cliente.SaveClientePort;
-import org.mitocode.application.port.out.cliente.UpdateClienteByIdPort;
+import org.mitocode.application.port.out.cliente.*;
 import org.mitocode.application.response.PageResponseDto;
 import org.mitocode.domain.model.Cliente;
 import org.mitocode.infraestructure.adapters.output.persistence.entities.ClienteEntity;
@@ -20,7 +17,7 @@ import java.util.UUID;
 
 @ApplicationScoped
 public class ClienteRepository implements PanacheRepositoryBase<ClienteEntity, UUID>,
-        SaveClientePort, ListAllClientePort, FindByIdClientePort, UpdateClienteByIdPort {
+        SaveClientePort, ListAllClientePort, FindByIdClientePort, UpdateClienteByIdPort, DeleteByIdClientePort {
 
     @Override
     @WithTransaction
@@ -83,5 +80,14 @@ public class ClienteRepository implements PanacheRepositoryBase<ClienteEntity, U
         return entities.stream()
                 .map(this::toDomain)
                 .toList();
+    }
+
+    @Override
+    @WithTransaction
+    public Uni<Void> deleteById(String id) {
+        return this.update(
+                "estadoActivo = false where id = ?1",
+                UUID.fromString(id)
+        ).replaceWithVoid();
     }
 }

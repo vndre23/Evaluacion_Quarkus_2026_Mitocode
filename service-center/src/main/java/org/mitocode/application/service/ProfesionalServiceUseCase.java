@@ -8,10 +8,7 @@ import org.mitocode.application.exceptions.BusinessException;
 import org.mitocode.application.port.in.CrudProfesionalUseCase;
 import org.mitocode.application.port.in.ListAllProfesionalByFechaUseCase;
 import org.mitocode.application.port.in.ListAllProfesionalGroupByFechaUseCase;
-import org.mitocode.application.port.out.profesional.FindByIdProfesionalPort;
-import org.mitocode.application.port.out.profesional.ListAllProfesionalPort;
-import org.mitocode.application.port.out.profesional.SaveProfesionalPort;
-import org.mitocode.application.port.out.profesional.UpdateProfesionalByIdPort;
+import org.mitocode.application.port.out.profesional.*;
 import org.mitocode.application.port.out.reserva.ListAllByProfesionalPort;
 import org.mitocode.application.response.*;
 import org.mitocode.domain.enums.ErrorType;
@@ -39,12 +36,15 @@ public class ProfesionalServiceUseCase implements CrudProfesionalUseCase, ListAl
 
     private final ListAllByProfesionalPort listAllByProfesionalPort;
 
-    public ProfesionalServiceUseCase(FindByIdProfesionalPort findByIdProfesionalPort, ListAllProfesionalPort listAllProfesionalPort, SaveProfesionalPort saveProfesionalPort, UpdateProfesionalByIdPort updateProfesionalByIdPort, ListAllByProfesionalPort listAllByProfesionalPort) {
+    private final DeleteByIdProfesionalPort deleteByIdProfesionalPort;
+
+    public ProfesionalServiceUseCase(FindByIdProfesionalPort findByIdProfesionalPort, ListAllProfesionalPort listAllProfesionalPort, SaveProfesionalPort saveProfesionalPort, UpdateProfesionalByIdPort updateProfesionalByIdPort, ListAllByProfesionalPort listAllByProfesionalPort, DeleteByIdProfesionalPort deleteByIdProfesionalPort) {
         this.findByIdProfesionalPort = findByIdProfesionalPort;
         this.listAllProfesionalPort = listAllProfesionalPort;
         this.saveProfesionalPort = saveProfesionalPort;
         this.updateProfesionalByIdPort = updateProfesionalByIdPort;
         this.listAllByProfesionalPort = listAllByProfesionalPort;
+        this.deleteByIdProfesionalPort = deleteByIdProfesionalPort;
     }
 
     @Override
@@ -100,7 +100,13 @@ public class ProfesionalServiceUseCase implements CrudProfesionalUseCase, ListAl
 
     @Override
     public Uni<Void> deleteById(String id) {
-        return null;
+        return this.findByIdProfesionalPort.findById(id)
+                .onItem().ifNull().failWith(() ->
+                        new BusinessException(
+                                ErrorType.BUSINESS_NOT_FOUND_ERROR,
+                                ErrorType.BUSINESS_NOT_FOUND_ERROR.getDescription()))
+                .flatMap(cliente -> deleteByIdProfesionalPort.deleteById(cliente.getId().toString()));
+
     }
 
     @Override
