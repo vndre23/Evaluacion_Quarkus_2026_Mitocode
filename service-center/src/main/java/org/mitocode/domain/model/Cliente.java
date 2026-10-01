@@ -1,6 +1,7 @@
 package org.mitocode.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.*;
 
 import java.util.UUID;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Builder
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@RegisterForReflection
 public class Cliente {
 
     private UUID id;

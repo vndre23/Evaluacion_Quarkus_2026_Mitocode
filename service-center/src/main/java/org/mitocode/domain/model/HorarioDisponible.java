@@ -1,5 +1,6 @@
 package org.mitocode.domain.model;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Setter
+@RegisterForReflection
 public class HorarioDisponible {
 
     private UUID id;

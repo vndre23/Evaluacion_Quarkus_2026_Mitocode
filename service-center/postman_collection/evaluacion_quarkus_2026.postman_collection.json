@@ -20,8 +20,7 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "body": {
@@ -62,8 +61,7 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "url": {
@@ -105,12 +103,11 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/178badc3-d10e-41de-b40d-38f6145aa528",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/44444444-4444-4444-4444-444444444444",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -122,7 +119,7 @@
                 "v1",
                 "service-center",
                 "client",
-                "178badc3-d10e-41de-b40d-38f6145aa528"
+                "44444444-4444-4444-4444-444444444444"
               ]
             }
           },
@@ -139,13 +136,12 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales111\",\r\n    \"email\": \"ajcruz@gmail.com\",\r\n    \"telefono\": \"123456789\"\r\n}",
+              "raw": "{\r\n    \"nombres\": \"Ana Fiorella\",\r\n    \"apellidos\": \"Torres Tito\",\r\n    \"email\": \"anatito@gmail.com.pe\",\r\n    \"telefono\": \"+51983567897\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -153,7 +149,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/178badc3-d10e-41de-b40d-38f6145aa528",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/44444444-4444-4444-4444-444444444444",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -165,7 +161,7 @@
                 "v1",
                 "service-center",
                 "client",
-                "178badc3-d10e-41de-b40d-38f6145aa528"
+                "44444444-4444-4444-4444-444444444444"
               ]
             }
           },
@@ -182,12 +178,11 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/d7106dcb-5bda-45a9-93c0-15281dc3ad06",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/client/44444444-4444-4444-4444-444444444444",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -199,7 +194,7 @@
                 "v1",
                 "service-center",
                 "client",
-                "d7106dcb-5bda-45a9-93c0-15281dc3ad06"
+                "44444444-4444-4444-4444-444444444444"
               ]
             }
           },
@@ -221,13 +216,12 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\"\r\n    //\"especialidad\": \"Psicología\"\r\n}",
+              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\",\r\n    \"especialidad\": \"Psicología\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -263,8 +257,7 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "url": {
@@ -306,12 +299,11 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/19965c97-d74a-44e1-83e8-076ba781ccdf",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/cccccccc-cccc-cccc-cccc-cccccccccccc",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -323,7 +315,7 @@
                 "v1",
                 "service-center",
                 "profesional",
-                "19965c97-d74a-44e1-83e8-076ba781ccdf"
+                "cccccccc-cccc-cccc-cccc-cccccccccccc"
               ]
             }
           },
@@ -340,13 +332,12 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"nombres\": \"Andre Jesus\",\r\n    \"apellidos\": \"Cruz Gonzales\",\r\n    \"especialidad\": \"Asesoria\"\r\n}",
+              "raw": "{\r\n    \"nombres\": \"Miguel Damian\",\r\n    \"apellidos\": \"Gonzales Gonzales\",\r\n    \"especialidad\": \"Asesorías\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -354,7 +345,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/19965c97-d74a-44e1-83e8-076ba781ccdf",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/cccccccc-cccc-cccc-cccc-cccccccccccc",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -366,7 +357,7 @@
                 "v1",
                 "service-center",
                 "profesional",
-                "19965c97-d74a-44e1-83e8-076ba781ccdf"
+                "cccccccc-cccc-cccc-cccc-cccccccccccc"
               ]
             }
           },
@@ -383,12 +374,11 @@
               {
                 "key": "traceparent",
                 "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-                "type": "text",
-                "disabled": true
+                "type": "text"
               }
             ],
             "url": {
-              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/79965c97-d74a-44e1-83e8-076ba781ccdf",
+              "raw": "http://localhost:8080/mitocode/api/v1/service-center/profesional/cccccccc-cccc-cccc-cccc-cccccccccccc",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -400,7 +390,7 @@
                 "v1",
                 "service-center",
                 "profesional",
-                "79965c97-d74a-44e1-83e8-076ba781ccdf"
+                "cccccccc-cccc-cccc-cccc-cccccccccccc"
               ]
             }
           },
@@ -416,13 +406,12 @@
           {
             "key": "traceparent",
             "value": "f4462048-0536-4fca-92ad-8e11a156f2f2",
-            "type": "text",
-            "disabled": true
+            "type": "text"
           }
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"profesional\": \"79965c97-d74a-44e1-83e8-076ba781ccdf\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"15:00:00\",\r\n  \"horaFin\": \"16:00:00\"\r\n}",
+          "raw": "{\r\n  \"profesional\": \"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\r\n  \"fecha\": \"2026-09-30\",\r\n  \"horaInicio\": \"15:00:00\",\r\n  \"horaFin\": \"16:00:00\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -451,10 +440,16 @@
       "name": "reservar",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "traceparent",
+            "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
+            "type": "text"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"cliente\": \"978badc3-d10e-41de-b40d-38f6145aa528\",\r\n  \"profesional\": \"79965c97-d74a-44e1-83e8-076ba781ccdf\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"09:00:00\",\r\n  \"horaFin\": \"10:00:00\"\r\n}",
+          "raw": "{\r\n  \"cliente\": \"11111111-1111-1111-1111-111111111111\",\r\n  \"profesional\": \"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\r\n  \"fecha\": \"2026-09-29\",\r\n  \"horaInicio\": \"15:00:00\",\r\n  \"horaFin\": \"16:00:00\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -487,12 +482,11 @@
           {
             "key": "traceparent",
             "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-            "type": "text",
-            "disabled": true
+            "type": "text"
           }
         ],
         "url": {
-          "raw": "http://localhost:8080/mitocode/api/v1/service-center/reserva/cancelar/c582ff62-7aa7-4f46-a1a3-14eb2c9a49e6",
+          "raw": "http://localhost:8080/mitocode/api/v1/service-center/reserva/cancelar/20000000-0000-0000-0000-000000000001",
           "protocol": "http",
           "host": [
             "localhost"
@@ -505,7 +499,7 @@
             "service-center",
             "reserva",
             "cancelar",
-            "c582ff62-7aa7-4f46-a1a3-14eb2c9a49e6"
+            "20000000-0000-0000-0000-000000000001"
           ]
         }
       },
@@ -522,8 +516,7 @@
           {
             "key": "traceparent",
             "value": "22378c93-9fd8-4db1-8728-ede4fcbb8560",
-            "type": "text",
-            "disabled": true
+            "type": "text"
           }
         ],
         "url": {

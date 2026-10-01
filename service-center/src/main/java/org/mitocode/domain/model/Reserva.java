@@ -1,6 +1,7 @@
 package org.mitocode.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.*;
 import org.mitocode.domain.enums.ReservaEstado;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Builder
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@RegisterForReflection
 public class Reserva {
 
     private UUID id;

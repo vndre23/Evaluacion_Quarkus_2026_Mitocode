@@ -26,3 +26,9 @@ quarkus:
 
   jackson:
     accept-case-insensitive-enums: true
+
+"%dev":
+  quarkus:
+  otel:
+  traces:
+  exporter: no
