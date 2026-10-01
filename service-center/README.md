@@ -30,7 +30,7 @@ Permite gestionar la información de los profesionales que forman parte del cent
 
 ---
 
-## 2. CRUD de Clientes
+# 2. CRUD de Clientes
 
 Permite gestionar los clientes que pueden realizar reservas.
 
@@ -276,6 +276,7 @@ El proyecto utiliza las siguientes tecnologías:
 * **JUnit**
 * **@QuarkusTest**
 * **Docker**
+* **Docker Compose**
 * **GraalVM Native**
 * **Postman**
 
@@ -367,7 +368,7 @@ Los errores son tratados de manera centralizada para proporcionar respuestas con
 
 ---
 
-# # Resiliencia
+# Resiliencia
 
 La aplicación utiliza **SmallRye Fault Tolerance** para implementar mecanismos de resiliencia.
 
@@ -394,15 +395,15 @@ Estas anotaciones permiten demostrar el uso de los mecanismos de tolerancia a fa
 * `@Retry`: permite reintentar la operación cuando se presenta un fallo.
 * `@Timeout`: establece un tiempo máximo de espera para la ejecución.
 
-> **Nota:** 
-> Esta implementación se realizó específicamente como parte de los requisitos de la evaluación final. 
-> Actualmente el proyecto no consume ningún microservicio externo ni presenta una comunicación entre microservicios 
-> que requiera mecanismos de resiliencia. 
-> Por este motivo, las estrategias de `Fallback`, `CircuitBreaker`, `Retry` y `Timeout` 
-> fueron incorporadas sobre `findById` con fines demostrativos y para cumplir con el requisito 
-> de la evaluación relacionado, es por ello que al momento de realizar la consulta por id, devuelve el fallback 
-> del `CircuitBreaker` no es por una falla del endpoint solo por fines del examén.
-> con **SmallRye Fault Tolerance**.
+> **Nota:**
+>
+> Esta implementación se realizó específicamente como parte de los requisitos de la evaluación final.
+>
+> Actualmente el proyecto no consume ningún microservicio externo ni presenta una comunicación entre microservicios que requiera mecanismos de resiliencia.
+>
+> Por este motivo, las estrategias de `Fallback`, `CircuitBreaker`, `Retry` y `Timeout` fueron incorporadas sobre `findById` con fines demostrativos y para cumplir con el requisito de la evaluación relacionado con **SmallRye Fault Tolerance**.
+>
+> Debido a esta configuración demostrativa, al realizar determinadas consultas por ID puede ejecutarse el método `Fallback`. Esto no representa necesariamente una falla funcional del endpoint, sino el comportamiento implementado específicamente para demostrar el mecanismo de resiliencia solicitado en la evaluación.
 
 ---
 
@@ -451,7 +452,9 @@ Para ejecutar el proyecto localmente se requiere:
 
 * Java 21
 * Maven 3.9.x o superior
-* Base de datos configurada de acuerdo con `application.properties`
+* Docker
+* Docker Compose
+* Base de datos configurada de acuerdo con `application.yml`
 
 Para verificar Java:
 
@@ -465,11 +468,63 @@ Para verificar Maven:
 mvn -version
 ```
 
+Para verificar Docker:
+
+```bash
+docker --version
+```
+
+---
+
+## Levantar infraestructura con Docker Compose
+
+Antes de ejecutar la aplicación en modo desarrollo, es necesario iniciar los servicios definidos en el archivo `docker-compose.yml`.
+
+El archivo se encuentra dentro del directorio:
+
+```text
+docker/
+```
+
+Desde la raíz del proyecto ejecutar:
+
+```bash
+cd docker
+```
+
+Luego ejecutar:
+
+```bash
+docker-compose up -d
+```
+
+También puede utilizarse:
+
+```bash
+docker compose up -d
+```
+
+Este comando inicia los servicios necesarios para que la aplicación pueda conectarse correctamente a la infraestructura requerida, como la base de datos.
+
+Para verificar los contenedores en ejecución:
+
+```bash
+docker ps
+```
+
+Una vez que los servicios se encuentren disponibles, se puede iniciar la aplicación Quarkus.
+
 ---
 
 ## Ejecutar en modo desarrollo
 
-Desde la raíz del proyecto ejecutar:
+Después de levantar los servicios mediante Docker Compose, regresar a la raíz del proyecto:
+
+```bash
+cd ..
+```
+
+Luego ejecutar:
 
 ```bash
 mvn quarkus:dev
@@ -492,6 +547,33 @@ OpenAPI:
 ```text
 http://localhost:8080/q/openapi
 ```
+
+### Orden recomendado de ejecución
+
+El flujo para ejecutar el proyecto localmente es:
+
+```text
+1. Iniciar Docker Desktop
+        │
+        ▼
+2. cd docker
+        │
+        ▼
+3. docker-compose up -d
+        │
+        ▼
+4. Regresar a la raíz del proyecto
+        │
+        ▼
+5. mvn quarkus:dev
+        │
+        ▼
+6. Aplicación disponible en localhost:8080
+```
+
+> **Nota:**
+>
+> Es necesario ejecutar `docker-compose up -d` antes de iniciar Quarkus cuando la aplicación requiere los servicios definidos en `docker/docker-compose.yml`.
 
 ---
 
@@ -587,7 +669,8 @@ El proyecto contiene las configuraciones necesarias para soportar ambas modalida
 ```text
 docker/
 ├── Dockerfile.jvm
-└── Dockerfile.native-community
+├── Dockerfile.native-community
+└── docker-compose.yml
 ```
 
 ## Dockerfile JVM
@@ -599,6 +682,17 @@ El proceso utiliza Maven para compilar la aplicación y posteriormente copia los
 ## Dockerfile Native
 
 `Dockerfile.native-community` permite generar y ejecutar la versión Native de la aplicación utilizando GraalVM/Quarkus Native.
+
+## Docker Compose
+
+`docker-compose.yml` define los servicios de infraestructura necesarios para ejecutar la aplicación localmente.
+
+Para iniciar estos servicios:
+
+```bash
+cd docker
+docker-compose up -d
+```
 
 ---
 
@@ -653,29 +747,42 @@ postman_collection/collection.json
 
 ## Importar colección en Postman
 
-1. Ejecutar la aplicación:
+1. Levantar la infraestructura:
+
+```bash
+cd docker
+docker-compose up -d
+```
+
+2. Regresar a la raíz del proyecto:
+
+```bash
+cd ..
+```
+
+3. Ejecutar la aplicación:
 
 ```bash
 mvn quarkus:dev
 ```
 
-2. Abrir Postman.
+4. Abrir Postman.
 
-3. Seleccionar:
+5. Seleccionar:
 
 ```text
 Import
 ```
 
-4. Seleccionar el archivo:
+6. Seleccionar el archivo:
 
 ```text
 postman_collection/collection.json
 ```
 
-5. Postman importará la colección.
+7. Postman importará la colección.
 
-6. Ejecutar las peticiones para validar los servicios REST.
+8. Ejecutar las peticiones para validar los servicios REST.
 
 La aplicación estará disponible por defecto en:
 
@@ -758,7 +865,8 @@ La estructura general del proyecto es:
 .
 ├── docker/
 │   ├── Dockerfile.jvm
-│   └── Dockerfile.native-community
+│   ├── Dockerfile.native-community
+│   └── docker-compose.yml
 │
 ├── postman_collection/
 │   └── collection.json
@@ -772,7 +880,7 @@ La estructura general del proyecto es:
 │   │   ├── java/
 │   │   │   └── ...
 │   │   └── resources/
-│   │       ├── application.properties
+│   │       ├── application.yml
 │   │       └── db/
 │   │           └── migration/
 │   │
@@ -789,6 +897,21 @@ La estructura general del proyecto es:
 
 ## Ejecución local
 
+Desde la raíz del proyecto:
+
+```bash
+cd docker
+docker-compose up -d
+```
+
+Después regresar a la raíz:
+
+```bash
+cd ..
+```
+
+Ejecutar Quarkus:
+
 ```bash
 mvn quarkus:dev
 ```
@@ -803,6 +926,12 @@ Swagger:
 
 ```text
 http://localhost:8080/q/swagger-ui
+```
+
+OpenAPI:
+
+```text
+http://localhost:8080/q/openapi
 ```
 
 ---
@@ -849,6 +978,7 @@ Las principales decisiones técnicas del proyecto son:
 * **JUnit y `@QuarkusTest`** para las pruebas.
 * **Postman** para las pruebas funcionales de los endpoints.
 * **Docker** para facilitar la ejecución de la aplicación.
+* **Docker Compose** para levantar la infraestructura necesaria durante el desarrollo local.
 * **GraalVM Native** para proporcionar una alternativa de ejecución nativa.
 
 El proyecto no utiliza Kafka ni requiere despliegue en la nube.
@@ -857,16 +987,18 @@ El proyecto no utiliza Kafka ni requiere despliegue en la nube.
 
 # Resumen de comandos
 
-| Acción                | Comando                                                 |
-| --------------------- | ------------------------------------------------------- |
-| Ejecutar localmente   | `mvn quarkus:dev`                                       |
-| Ejecutar pruebas      | `mvn test`                                              |
-| Ejecutar verificación | `mvn verify`                                            |
-| Docker JVM            | `cd scripts && sh deploy-jvm-in-docker.sh`              |
-| Docker Native         | `cd scripts && sh deploy-native-community-in-docker.sh` |
-| Swagger UI            | `http://localhost:8080/q/swagger-ui`                    |
-| OpenAPI               | `http://localhost:8080/q/openapi`                       |
-| Colección Postman     | `postman_collection/collection.json`                    |
+| Acción                         | Comando                                                 |
+| ------------------------------ | ------------------------------------------------------- |
+| Levantar infraestructura local | `cd docker && docker-compose up -d`                     |
+| Ver contenedores               | `docker ps`                                             |
+| Ejecutar localmente            | `mvn quarkus:dev`                                       |
+| Ejecutar pruebas               | `mvn test`                                              |
+| Ejecutar verificación          | `mvn verify`                                            |
+| Docker JVM                     | `cd scripts && sh deploy-jvm-in-docker.sh`              |
+| Docker Native                  | `cd scripts && sh deploy-native-community-in-docker.sh` |
+| Swagger UI                     | `http://localhost:8080/q/swagger-ui`                    |
+| OpenAPI                        | `http://localhost:8080/q/openapi`                       |
+| Colección Postman              | `postman_collection/collection.json`                    |
 
 ---
 
@@ -899,6 +1031,7 @@ Este proyecto implementa los requerimientos solicitados para la evaluación fina
 * Pruebas con JUnit y `@QuarkusTest`.
 * Colección de pruebas Postman.
 * Interceptores para logs estructurados.
+* Docker Compose para levantar la infraestructura local.
 * Docker para ejecución JVM.
 * Docker para ejecución Native/GraalVM.
 * Sin dependencia obligatoria de JWT.
